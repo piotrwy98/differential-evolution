@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DifferentialEvolution": {
+      "commandName": "Project",
+      "commandLineArgs": "100 0,8 0,9"
+    }
+  }
+}
