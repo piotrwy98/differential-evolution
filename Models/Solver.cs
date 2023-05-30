@@ -53,8 +53,8 @@ namespace DifferentialEvolution.Models
             Population population = (Population)sender;
             Individual best = population.GetBest();
 
-            Console.Write("#" + _counter++ + " Fitness = " + string.Format("0,0000", Math.Round(best.Fitness, 4)));
-            Console.WriteLine(string.Format("   Coordinates: ({0})", best.ToString()));
+            Console.Write($"#{_counter++}\t Fitness = {Math.Round(best.Fitness, 4), -10}\t");
+            Console.WriteLine($"Coordinates: ({best})");
         }
     }
 }
