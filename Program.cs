@@ -68,6 +68,36 @@ namespace DifferentialEvolution
                         domain = Functions.GriewankDomain;
                         break;
 
+                    case "RO":
+                        fitnessFunction = Functions.RosenbrockFunction;
+                        domain = Functions.RosenbrockDomain;
+                        break;
+
+                    case "WE":
+                        fitnessFunction = Functions.WeierstrassFunction;
+                        domain = Functions.WeierstrassDomain;
+                        break;
+
+                    case "SF":
+                        fitnessFunction = Functions.SchafferFunction;
+                        domain = Functions.SchafferDomain;
+                        break;
+
+                    case "LE":
+                        fitnessFunction = Functions.LevyFunction;
+                        domain = Functions.LevyDomain;
+                        break;
+
+                    case "SH":
+                        fitnessFunction = Functions.ShubertFunction;
+                        domain = Functions.ShubertDomain;
+                        break;
+
+                    case "HA":
+                        fitnessFunction = Functions.HappyCatFunction;
+                        domain = Functions.HappyCatDomain;
+                        break;
+
                     default:
                         errors.Add("'-o (Function)' option unrecognized");
                         break;

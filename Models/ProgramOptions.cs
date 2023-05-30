@@ -19,7 +19,7 @@ namespace DifferentialEvolution.Models
         [Option('d', "dimensions", Required = true, HelpText = "Dimensions [>=1]")]
         public int Dimensions { get; set; }
 
-        [Option('o', "function", Required = true, HelpText = "Function:\nSP - Sphere \nRA - Rastrigin \nMI - Michalewicz \nSC - Schwefel \nAC - Ackley \nGR - Griewank")]
+        [Option('o', "function", Required = true, HelpText = "Function:\nSP - Sphere \nRA - Rastrigin \nMI - Michalewicz \nSC - Schwefel \nAC - Ackley \nGR - Griewank \nRO - Rosenbrock \nWE - Weierstrass \nSF - Schaffer \nLE - Levy \nSH - Shubert \nHA - HappyCat")]
         public string Function { get; set; }
     }
 }
