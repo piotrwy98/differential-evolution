@@ -33,6 +33,9 @@ namespace DifferentialEvolution
                 if (x.Dimensions < 1)
                     errors.Add("'-d (Dimensions)' has to be greater than or equal to 1");
 
+                if (x.NumberOfVectors < 1 || x.NumberOfVectors > 2)
+                    errors.Add("'-k (Number of vectors)' has to be 1 or 2");
+
                 FitnessFunction fitnessFunction = null;
                 Tuple<double, double> domain = null;
 
@@ -106,7 +109,7 @@ namespace DifferentialEvolution
 
                 MutationScheme mutationScheme = MutationScheme.NONE;
 
-                switch(x.MutationScheme.ToUpper())
+                switch (x.MutationScheme.ToUpper())
                 {
                     case "RAND":
                         mutationScheme = MutationScheme.RAND;
@@ -130,7 +133,8 @@ namespace DifferentialEvolution
                     Dimensions = x.Dimensions,
                     FitnessFunction = fitnessFunction,
                     Domain = domain,
-                    MutationScheme = mutationScheme
+                    MutationScheme = mutationScheme,
+                    NumberOfVectors = x.NumberOfVectors
                 };
             }, x => null);
 

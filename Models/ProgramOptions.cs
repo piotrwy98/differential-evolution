@@ -24,5 +24,8 @@ namespace DifferentialEvolution.Models
 
         [Option('m', "mutationscheme", Required = true, HelpText = "Mutation scheme {BEST, RAND}")]
         public string MutationScheme { get; set; }
+
+        [Option('k', "numberofvectors", Required = true, HelpText = "Number of vectors {1, 2}")]
+        public int NumberOfVectors { get; set; }
     }
 }

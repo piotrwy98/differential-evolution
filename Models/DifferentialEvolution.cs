@@ -41,7 +41,7 @@ namespace DifferentialEvolution.Models
                     Individual individual1 = Population.Solutions[a];
                     Individual individual2 = Population.Solutions[b];
                     Individual individual3 = Population.Solutions[c];
-                    
+
                     int i = 0;
                     int R = RandomGenerator.Instance.Random.Next(Population.Solutions.Count);
                     Individual candidate = new Individual();
@@ -51,7 +51,21 @@ namespace DifferentialEvolution.Models
                         if (ri < CR || i == R)
                         {
                             // simple mutation
-                            double newElement = individual1.Elements[i] + F * (individual2.Elements[i] - individual3.Elements[i]);
+                            double newElement = default;
+                            if (Parameters.NumberOfVectors == 1)
+                            {
+                                newElement = individual1.Elements[i] + F * (individual2.Elements[i] - individual3.Elements[i]);
+                            }
+                            else
+                            {
+                                List<int> randomValues2 = RandomGenerator.GenerateRandom(2, 0, Population.Solutions.Count);
+                                int d = randomValues[0];
+                                int e = randomValues[1];
+                                Individual individual4 = Population.Solutions[d];
+                                Individual individual5 = Population.Solutions[e];
+
+                                newElement = individual1.Elements[i] + F * (individual2.Elements[i] - individual3.Elements[i] + individual4.Elements[i] - individual5.Elements[i]);
+                            }
 
                             if (CheckIfWithinDomain(newElement, Parameters))
                             {
