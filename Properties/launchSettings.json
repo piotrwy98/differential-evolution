@@ -2,7 +2,7 @@
   "profiles": {
     "DifferentialEvolution": {
       "commandName": "Project",
-      "commandLineArgs": "-n 100 -c 0.8 -f 0.9 -i 100 -d 6 -o SP"
+      "commandLineArgs": "-n 100 -c 0.8 -f 0.9 -i 100 -d 6 -o SP -m RAND"
     }
   }
 }

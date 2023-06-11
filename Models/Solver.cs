@@ -51,10 +51,24 @@ namespace DifferentialEvolution.Models
         private void DE_OnGenerationComplete(object sender, EventArgs e)
         {
             Population population = (Population)sender;
-            Individual best = population.GetBest();
 
-            Console.Write($"#{_counter++}\t Fitness = {Math.Round(best.Fitness, 4), -10}\t");
-            Console.WriteLine($"Coordinates: ({best})");
+            switch(Parameters.MutationScheme)
+            {
+                case MutationScheme.BEST:
+                    Individual best = population.GetBest();
+                    Console.Write($"#{_counter++}\t Fitness = {Math.Round(best.Fitness, 4),-10}\t");
+                    Console.WriteLine($"Coordinates: ({best})");
+                    break;
+
+                case MutationScheme.RAND:
+                    Individual random = population.GetRandom();
+                    Console.Write($"#{_counter++}\t Fitness = {Math.Round(random.Fitness, 4),-10}\t");
+                    Console.WriteLine($"Coordinates: ({random})");
+                    break;
+                
+                default:
+                    return;
+            }
         }
     }
 }

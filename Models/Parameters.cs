@@ -40,6 +40,11 @@ namespace DifferentialEvolution.Models
         public FitnessFunction FitnessFunction { get ; set; }
 
         /// <summary>
+        /// Function to optimalize
+        /// </summary>
+        public MutationScheme MutationScheme { get ; set; }
+
+        /// <summary>
         /// Default parameters
         /// </summary>
         public Parameters()

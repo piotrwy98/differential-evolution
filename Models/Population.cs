@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace DifferentialEvolution.Models
 {
@@ -19,6 +20,11 @@ namespace DifferentialEvolution.Models
         public Individual GetBest()
         {
             return Solutions.OrderBy(x => x.Fitness).FirstOrDefault();
+        }
+
+        public Individual GetRandom()
+        {
+            return Solutions[new Random().Next(Solutions.Count)];
         }
 
         public void Evaluate(FitnessFunction fitnessFunctionDelegate)

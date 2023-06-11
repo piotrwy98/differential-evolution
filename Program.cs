@@ -103,6 +103,24 @@ namespace DifferentialEvolution
                         break;
                 }
 
+
+                MutationScheme mutationScheme = MutationScheme.NONE;
+
+                switch(x.MutationScheme.ToUpper())
+                {
+                    case "RAND":
+                        mutationScheme = MutationScheme.RAND;
+                        break;
+
+                    case "BEST":
+                        mutationScheme = MutationScheme.BEST;
+                        break;
+
+                    default:
+                        errors.Add("'-m (MutationScheme' option unrecognized");
+                        break;
+                }
+
                 return new Parameters()
                 {
                     AgentsCount = x.PopulationSize,
@@ -112,6 +130,7 @@ namespace DifferentialEvolution
                     Dimensions = x.Dimensions,
                     FitnessFunction = fitnessFunction,
                     Domain = domain,
+                    MutationScheme = mutationScheme
                 };
             }, x => null);
 
