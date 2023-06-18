@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace DifferentialEvolution.Models
 {
     public class Solver
     {
         public Parameters Parameters { get; set; }
-        private static int _counter = 1;
+        public static int Counter = 1;
 
         public Solver(Parameters parameters)
         {
@@ -51,24 +52,40 @@ namespace DifferentialEvolution.Models
         private void DE_OnGenerationComplete(object sender, EventArgs e)
         {
             Population population = (Population)sender;
+            var fitness = 0.0;
 
             switch(Parameters.MutationScheme)
             {
                 case MutationScheme.BEST:
                     Individual best = population.GetBest();
-                    Console.Write($"#{_counter++}\t Fitness = {Math.Round(best.Fitness, 4),-10}\t");
+                    fitness = Math.Round(best.Fitness, 4);
+                    Console.Write($" #{Counter++}\t Fitness = {fitness, -10}\t");
                     Console.WriteLine($"Coordinates: ({best})");
                     break;
 
                 case MutationScheme.RAND:
                     Individual random = population.GetRandom();
-                    Console.Write($"#{_counter++}\t Fitness = {Math.Round(random.Fitness, 4),-10}\t");
+                    fitness = Math.Round(random.Fitness, 4);
+                    Console.Write($" #{Counter++}\t Fitness = {fitness, -10}\t");
                     Console.WriteLine($"Coordinates: ({random})");
                     break;
                 
                 default:
                     return;
             }
+
+            try
+            {
+                if (string.IsNullOrEmpty(Program.Results[Counter - 2]))
+                {
+                    Program.Results[Counter - 2] = fitness.ToString();
+                }
+                else
+                {
+                    Program.Results[Counter - 2] += "\t" + fitness.ToString();
+                }
+            }
+            catch { }
         }
     }
 }
